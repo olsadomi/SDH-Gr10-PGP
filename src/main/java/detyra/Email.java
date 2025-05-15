@@ -1,20 +1,28 @@
 package detyra;
 
-public class Email {
-    private String from;
-    private String to;
-    private String content;
-    private String signature;
+import java.io.Serializable;
 
-    public Email(String from, String to, String content, String signature) {
-        this.from = from;
-        this.to = to;
-        this.content = content;
-        this.signature = signature;
+public class  Email implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private String sender;
+    private String recipient;
+    private String message;
+
+
+    public Email(String sender, String recipient, String message) {
+        this.sender = sender;
+        this.recipient = recipient;
+        this.message = message;
     }
 
-    public String getFrom() { return from; }
-    public String getTo() { return to; }
-    public String getContent() { return content; }
-    public String getSignature() { return signature; }
+    public String getSender() { return sender; }
+    public String getRecipient() { return recipient; }
+    public String getMessage() { return message; }
+
+
+    @Override
+    public String toString() {
+        return "From: " + sender + "\nMessage: " + message;
+    }
 }
