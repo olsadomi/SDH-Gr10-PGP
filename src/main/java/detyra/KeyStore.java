@@ -22,6 +22,10 @@ public class KeyStore {
         privateKeys.put(username, privateKey);
     }
 
+    public static boolean hasKeys(String username) {
+        return publicKeys.containsKey(username) && privateKeys.containsKey(username);
+    }
+
 
 
 
