@@ -17,5 +17,12 @@ public class KeyStore {
         return privateKeys.get(username);
     }
 
+    public static void addKeys(String username, PublicKey publicKey, PrivateKey privateKey) {
+        publicKeys.put(username, publicKey);
+        privateKeys.put(username, privateKey);
+    }
+
+
+
 
 }
