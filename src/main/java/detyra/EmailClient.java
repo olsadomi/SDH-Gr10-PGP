@@ -32,4 +32,29 @@ public class EmailClient {
             System.out.println("Failed to generate keys: " + e.getMessage());
         }
     }
+    public void sendEmail(String recipient, String message) {
+        System.out.println("Please enter your email content below:");
+        System.out.println("> " + message);
+        System.out.println("Encrypting and signing the email...");
+
+        try {
+            PublicKey recipientKey = KeyStore.getPublicKey(recipient);
+            if (recipientKey == null) {
+                System.out.println("Recipient not found or has no public key!");
+                return;
+            }
+
+//            String encryptedMessage = PGPUtils.encrypt(message, recipientKey, true);
+            // duhet me kriju metoden encrypt te PGUUtils
+            String signature = PGPUtils.sign(message, privateKey, true);
+
+//            Email email = new Email(username, recipient, encryptedMessage + "|" + signature);
+//            server.addEmail(recipient, email);
+
+            System.out.println("Email successfully sent to " + recipient);
+            System.out.println("Awaiting encrypted messages...");
+        } catch (Exception e) {
+            System.out.println("Failed to send email: " + e.getMessage());
+        }
+    }
 }
