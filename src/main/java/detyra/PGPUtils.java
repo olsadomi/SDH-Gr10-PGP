@@ -8,7 +8,24 @@ import java.security.Signature;
 import java.util.Base64;
 
 public class PGPUtils {
-
+    public static String encrypt(String message, PublicKey publicKey, boolean formalMode) {
+        try {
+            if (!formalMode) {
+                System.out.println("Original message: " + message);
+            }
+            Cipher cipher = Cipher.getInstance("RSA");
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+            byte[] encryptedBytes = cipher.doFinal(message.getBytes());
+            String encryptedMessage = Base64.getEncoder().encodeToString(encryptedBytes);
+            if (!formalMode) {
+                System.out.println("Encrypted message: " + encryptedMessage);
+            }
+            return encryptedMessage;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static String decrypt(String encryptedMessage, PrivateKey privateKey, boolean formalMode) {
         try {
