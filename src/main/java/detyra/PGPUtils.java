@@ -61,5 +61,19 @@ public class PGPUtils {
         return signedMessage;
     }
 
-
+    public static boolean verify(String message, String signatureStr, PublicKey publicKey, boolean formalMode) throws Exception {
+        if (!formalMode) {
+            System.out.println("Verifying message: " + message);
+            System.out.println("Signature to verify: " + signatureStr);
+        }
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initVerify(publicKey);
+        signature.update(message.getBytes(StandardCharsets.UTF_8));
+        byte[] signedBytes = Base64.getDecoder().decode(signatureStr);
+        boolean isValid = signature.verify(signedBytes);
+        if (!formalMode) {
+            System.out.println("Signature verification result: " + (isValid ? "Valid" : "Invalid"));
+        }
+        return isValid;
+    }
 }
