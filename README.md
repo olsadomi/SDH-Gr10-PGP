@@ -54,7 +54,7 @@ java detyra.Main <username> inbox
 java detyra.Main bob send alice "Hello Alice, this is a test!"
 java detyra.Main arta inbox
 ```
-
+----------------------------------------------------------------------
 
 ## 🎮 Features
 - User-based login (username only)
@@ -79,6 +79,8 @@ The sender signs the message using their private key. When the recipient receive
 - #### Decryption:
 The recipient uses their private key to decrypt the message.
 
+---------------------------------------------------------------------------
+
 ## 🎥 Demonstration Videos
 - #### Compiling in Command Prompt
 - ![Compiling in Command Prompt](src/main/java/visual/compileInCmd.gif)
@@ -88,3 +90,17 @@ The recipient uses their private key to decrypt the message.
 
 - #### Additional Transparent Mode
 - ![Additional Transparent Mode](src/main/java/visual/transparentModeDemonstration.gif)
+
+
+## 💡 Additional Notes
+- This is a simulated environment: no real networking or persistent file storage.
+- Ideal for demonstrating how cryptographic principles work in secure communication.
+-------------------------------------------------------------------------
+## 👩‍💻 Authors
+- Mehmet Mehmeti
+- Muhamed Jakupi
+- Natyra Bajgora
+- Olsa Domi
+
+##### Data Security Project - PGP (Pretty Good Privacy) Simulation for Email Encryption Console Application
+##### Students of Computer & Software Engineering - University of Prishtina
