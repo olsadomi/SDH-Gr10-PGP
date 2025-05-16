@@ -3,6 +3,7 @@ package detyra;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.List;
 
 public class EmailClient {
     private String username;
@@ -54,6 +55,48 @@ public class EmailClient {
             System.out.println("Awaiting encrypted messages...");
         } catch (Exception e) {
             System.out.println("Failed to send email: " + e.getMessage());
+        }
+    }
+    public void checkInbox() {
+        System.out.println("New encrypted email received. Decrypting...");
+
+        List<Email> inbox = server.getEmails(username);
+        if (inbox.isEmpty()) {
+            System.out.println("Inbox is empty.");
+        } else {
+            for (Email email : inbox) {
+                try {
+                    String[] parts = email.getMessage().split("\\|");
+                    if (parts.length != 2) {
+                        System.out.println("Invalid email format from " + email.getSender());
+                        continue;
+                    }
+
+                    String encryptedMessage = parts[0];
+                    String signature = parts[1];
+
+                    String decryptedMessage = PGPUtils.decrypt(encryptedMessage, privateKey, true);
+
+                    PublicKey senderKey = KeyStore.getPublicKey(email.getSender());
+                    if (senderKey == null) {
+                        System.out.println("Cannot verify sender - public key not found for " + email.getSender());
+                        continue;
+                    }
+
+//                    boolean verified = PGPUtils.verify(decryptedMessage, signature, senderKey, true);
+//
+//                    if (verified) {
+//                        System.out.println("The email from " + email.getSender() + " has been successfully decrypted and verified.");
+//                        System.out.println("Message content:");
+//                        System.out.println(decryptedMessage);
+//                    } else {
+//                        System.out.println("WARNING: The email from " + email.getSender() + " failed verification!");
+//                    }
+//                    System.out.println("------------------");
+//                } catch (Exception e) {
+//                    System.out.println("Failed to process email from " + email.getSender() + ": " + e.getMessage());
+//                }
+            }
         }
     }
 }
