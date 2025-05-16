@@ -83,19 +83,19 @@ public class EmailClient {
                         continue;
                     }
 
-//                    boolean verified = PGPUtils.verify(decryptedMessage, signature, senderKey, true);
-//
-//                    if (verified) {
-//                        System.out.println("The email from " + email.getSender() + " has been successfully decrypted and verified.");
-//                        System.out.println("Message content:");
-//                        System.out.println(decryptedMessage);
-//                    } else {
-//                        System.out.println("WARNING: The email from " + email.getSender() + " failed verification!");
-//                    }
-//                    System.out.println("------------------");
-//                } catch (Exception e) {
-//                    System.out.println("Failed to process email from " + email.getSender() + ": " + e.getMessage());
-//                }
+                    boolean verified = PGPUtils.verify(decryptedMessage, signature, senderKey, true);
+
+                    if (verified) {
+                        System.out.println("The email from " + email.getSender() + " has been successfully decrypted and verified.");
+                        System.out.println("Message content:");
+                        System.out.println(decryptedMessage);
+                    } else {
+                        System.out.println("WARNING: The email from " + email.getSender() + " failed verification!");
+                    }
+                    System.out.println("------------------");
+                } catch (Exception e) {
+                    System.out.println("Failed to process email from " + email.getSender() + ": " + e.getMessage());
+                }
             }
         }
     }
