@@ -83,13 +83,13 @@ The recipient uses their private key to decrypt the message.
 
 ## 🎥 Demonstration Videos
 - #### Compiling in Command Prompt
-- ![Compiling in Command Prompt](src/main/java/visual/compileInCmd.gif)
+![Compiling in Command Prompt](src/main/java/visual/compileInCmd.gif)
 
-- #### Console Program with Parameters
-- ![Console Program with Parameters](src/main/java/visual/parameterModeDemonstration.gif)
+- #### Command-line Parameter Mode
+![Console Program with Parameters](src/main/java/visual/parameterModeDemonstration.gif)
 
-- #### Additional Transparent Mode
-- ![Additional Transparent Mode](src/main/java/visual/transparentModeDemonstration.gif)
+- #### Additional Interactive Mode
+![Additional Interactive Mode](src/main/java/visual/transparentModeDemonstration.gif)
 
 
 ## 💡 Additional Notes
