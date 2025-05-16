@@ -58,4 +58,53 @@ public class Main {
             }
         }
     }
+    private static void runParameterMode(String[] args, EmailServer server) {
+        // Expected: <username> <command> [recipient] [message...]
+        // Commands: send, inbox
+
+        if (args.length < 2) {
+            System.out.println("Invalid arguments.");
+            printUsage();
+            return;
+        }
+
+        String username = args[0];
+        String command = args[1].toLowerCase();
+        EmailClient client = new EmailClient(username, server);
+
+        switch (command) {
+            case "send":
+                if (args.length < 4) {
+                    System.out.println("Usage: java detyra.Main <username> send <recipient> <message>");
+                    return;
+                }
+                String recipient = args[2];
+                // The message can be multiple args joined with spaces
+                StringBuilder sb = new StringBuilder();
+                for (int i = 3; i < args.length; i++) {
+                    sb.append(args[i]);
+                    if (i < args.length - 1) sb.append(" ");
+                }
+                String message = sb.toString();
+                client.sendEmail(recipient, message);
+                break;
+
+            case "inbox":
+                client.checkInbox();
+                break;
+
+            default:
+                System.out.println("Unknown command: " + command);
+                printUsage();
+        }
+    }
+
+    private static void printUsage() {
+        System.out.println("Usage:");
+        System.out.println("  java detyra.Main                # interactive mode");
+        System.out.println("  java detyra.Main <username> send <recipient> <message>");
+        System.out.println("  java detyra.Main <username> inbox");
+    }
 }
+
+
