@@ -11,7 +11,7 @@ public class Main {
             runInteractiveMode(server);
         } else {
             // Parameter mode
-//            runParameterMode(args, server); duhet te vazhdohet implementimi nga mehmeti
+             runParameterMode(args, server);
         }
     }
 
@@ -59,8 +59,8 @@ public class Main {
         }
     }
     private static void runParameterMode(String[] args, EmailServer server) {
-        // Expected: <username> <command> [recipient] [message...]
-        // Commands: send, inbox
+//         Expected: <username> <command> [recipient] [message...]
+//         Commands: send, inbox
 
         if (args.length < 2) {
             System.out.println("Invalid arguments.");
