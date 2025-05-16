@@ -44,12 +44,11 @@ public class EmailClient {
                 return;
             }
 
-//            String encryptedMessage = PGPUtils.encrypt(message, recipientKey, true);
-            // duhet me kriju metoden encrypt te PGUUtils
+            String encryptedMessage = PGPUtils.encrypt(message, recipientKey, true);
             String signature = PGPUtils.sign(message, privateKey, true);
 
-//            Email email = new Email(username, recipient, encryptedMessage + "|" + signature);
-//            server.addEmail(recipient, email);
+            Email email = new Email(username, recipient, encryptedMessage + "|" + signature);
+            server.addEmail(recipient, email);
 
             System.out.println("Email successfully sent to " + recipient);
             System.out.println("Awaiting encrypted messages...");
