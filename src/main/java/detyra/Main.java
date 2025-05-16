@@ -3,6 +3,17 @@ package detyra;
 import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        EmailServer server = new EmailServer();
+
+        if (args.length == 0) {
+            // No parameters -> Interactive mode
+            runInteractiveMode(server);
+        } else {
+            // Parameter mode
+//            runParameterMode(args, server); duhet te vazhdohet implementimi nga mehmeti
+        }
+    }
 
     private static void runInteractiveMode(EmailServer server) {
         Scanner scanner = new Scanner(System.in);
