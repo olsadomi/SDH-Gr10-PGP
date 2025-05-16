@@ -52,7 +52,7 @@ java detyra.Main <username> inbox
 🔁 Example:
 ```bash
 java detyra.Main bob send alice "Hello Alice, this is a test!"
-java detyra.Main arta inbox
+java detyra.Main alice inbox
 ```
 ----------------------------------------------------------------------
 
