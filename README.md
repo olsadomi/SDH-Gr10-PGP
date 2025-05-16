@@ -78,3 +78,9 @@ The sender signs the message using their private key. When the recipient receive
 
 - #### Decryption:
 The recipient uses their private key to decrypt the message.
+
+## 🎥 Demonstration Videos
+- #### Compiling in Command Prompt
+- ![Compiling in Command Prompt](src/main/java/visual/compileInCmd.gif)
+
+- #### Console Program with Parameters
